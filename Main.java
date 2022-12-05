@@ -53,7 +53,7 @@ public class Main {
    private static void queryContact(){
        System.out.println("Enter name of contact to query: ");
        String name = scanner.nextLine();
-       Contact contactInQuestion = mobilePhone.queryContact(name);
+       Contacts contactInQuestion = mobilePhone.queryContact(name);
        if(contactInQuestion != null){
            System.out.println("Phone number of contact is: " + contactInQuestion.getPhoneNumber());
            System.out.println("Enjoy!");
@@ -67,7 +67,7 @@ public class Main {
         System.out.println("What is the phone number of the new contact?");
         String phoneNumber = scanner.nextLine();
 
-        Contact newContact = Contact.createContact(name,phoneNumber);
+        Contact newContact = Contacts.createContact(name,phoneNumber);
         if(mobilePhone.addNewContact(newContact)){
             System.out.println("New contact added " + name + " Phone: " + phoneNumber);
         }
@@ -79,7 +79,7 @@ public class Main {
     private static void removeContact(){
         System.out.println("Enter name of contact you wish to delete: ");
         String name = scanner.nextLine();
-        Contact doomedContact = mobilePhone.queryContact(name);
+        Contacts doomedContact = mobilePhone.queryContact(name);
         if(doomedContact != null){
             mobilePhone.removeContact(doomedContact);
             System.out.println("Contact removed");
@@ -90,14 +90,14 @@ public class Main {
     private static void updateContact(){
         System.out.println("Enter name of contact you wish to update: ");
         String name = scanner.nextLine();
-        Contact existingContactRecord = mobilePhone.queryContact(name);
+        Contacts existingContactRecord = mobilePhone.queryContact(name);
 
         if(existingContactRecord != null){
             System.out.println("Enter new contact name: ");
             String newName = scanner.nextLine();
             System.out.println("Enter new phone number");
             String newPhoneNumber = scanner.nextLine();
-            Contact replacementContact = Contact.createContact(newName,newPhoneNumber);
+            Contacts replacementContact = Contacts.createContact(newName,newPhoneNumber);
                 if(mobilePhone.updateContact(existingContactRecord,replacementContact)) {
                     System.out.println("Successfully added contact");
                 }
